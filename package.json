@@ -20,10 +20,12 @@
   "homepage": "https://github.com/annabeatriz17/avalia-back#readme",
   "description": "",
   "dependencies": {
+    "@fast-csv/format": "^5.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "multer": "^1.4.5-lts.2",
+    "pdfkit": "^0.17.1",
     "pg": "^8.15.6",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
