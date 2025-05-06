@@ -24,8 +24,8 @@ const getSpeciesById = async (req, res) => {
 
 const createSpecies = async (req, res) => {
     try {
-        const { name, animal_id } = req.body;
-        const newSpecies = await speciesModel.createSpecies(name, animal_id);
+        const { race, description, animal_id } = req.body;
+        const newSpecies = await speciesModel.createSpecies(race, description, animal_id);
         res.status(201).json(newSpecies);
     } catch (error) {
         res.status(500).json({ message: "Erro ao criar espécie" });
@@ -34,8 +34,8 @@ const createSpecies = async (req, res) => {
 
 const updateSpecies = async (req, res) => {
     try {
-        const { name, animal_id } = req.body;
-        const updatedSpecies = await speciesModel.updateSpecies(req.params.id, name, animal_id);
+        const {race, description, animal_id} = req.body;
+        const updatedSpecies = await speciesModel.updateSpecies(req.params.id, race, description, animal_id);
         if (!updatedSpecies) {
             res.status(404).json({ message: "Espécie não encontrada" });
         }

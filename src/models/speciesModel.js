@@ -23,14 +23,15 @@ const getSpeciesById = async (id) => {
     return result.rows[0];
 };
 
-const createSpecies = async (name, animal_id) => {
-    const result = await pool.query("INSERT INTO species (name, animals_id) VALUES ($1, $2) RETURNING *", 
-        [name, animal_id]);
+const createSpecies = async (race, description, animal_id) => {
+    const result = await pool.query("INSERT INTO species (race, description, animals_id) VALUES ($1, $2, $3) RETURNING *",
+        [race, description, animal_id]);
     return result.rows[0];
 };
 
-const updateSpecies = async (id, name, animal_id ) => {
-    const result = await pool.query("UPDATE species SET name = $1, animals_id = $2 WHERE id = $3 RETURNING *", [name, animal_id, id]);
+const updateSpecies = async (id, race, description, animal_id) => {
+    const result = await pool.query("UPDATE species SET race = $1, description = $2, animals_id = $3 WHERE id = $4 RETURNING *",
+        [race, description, animal_id, id]);
     if (result.rowCount === 0) {
         return { error: "Espécie não encontrada" };
     }
