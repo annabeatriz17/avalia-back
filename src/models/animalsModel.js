@@ -1,19 +1,14 @@
 const pool = require("../config/database");
 
 const getAllAnimals = async (peso_real) => {
-    if (!peso_real) {
+    if (peso_real) {
         const result = await pool.query(
-            `SELECT animals.*, species.name AS species_name
-            FROM animals
-            LEFT JOIN species ON animals.species_id = species.id`,
+            `SELECT * FROM animals WHERE peso_real ILIKE $1`,[`%${peso_real}%`]
         );
     return result.rows;
     }else{
         const result = await pool.query(
-            `SELECT animals.id, animals.name, animals.peso_real, species.race AS species_race
-                FROM animals
-                LEFT JOIN species ON animals.species_id = species.id
-                WHERE animals.peso_real ILIKE $1`,[`%${peso_real}%`]
+            `SELECT * FROM animals`
         );
         return result.rows;
     }
