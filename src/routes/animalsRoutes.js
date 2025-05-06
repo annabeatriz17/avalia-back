@@ -28,7 +28,6 @@ const upload = require("../config/upload");
  */
 router.get("/animals", animalsController.getAllAnimals);
 
-
 /**
  * @swagger
  * /api/animals/{id}:
@@ -73,7 +72,51 @@ router.get("/animals/:id", animalsController.getAnimalById);
  *         description: animal criado com sucesso
  */
 router.post("/animals",  upload.single("photo"), animalsController.createAnimal);
+/**
+* @swagger
+ * /api/animals/{id}:
+ *   put:
+ *     summary: Atualiza um animal
+ *     tags: [animals]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               peso_real:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: animal atualizado com sucesso
+ */
 router.put("/animals/:id", animalsController.updateAnimal);
+
+/**
+ * @swagger
+ * /api/animals/{id}:
+ *   delete:
+ *     summary: Deleta um animal
+ *     tags: [animal]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Animal deletado com sucesso
+ */
 router.delete("/animals/:id", animalsController.deleteAnimal);
 
 module.exports = router;

@@ -7,7 +7,7 @@ const options = {
         info: {
             title: 'API dos Animais e Espécies',
             version: '1.0.0',
-            description: 'Documentação da API para gerenciar bruxos e casas de Hogwarts',
+            description: 'Documentação da API para gerenciar animais e espécies',
         },
     },
     apis: ['./src/routes/*.js'], // <- Caminho das suas rotas

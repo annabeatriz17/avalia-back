@@ -11,8 +11,8 @@ app.use(cors());
 app.use(express.json());
 setupSwagger(app);
 
-app.use("api/animals", animalsRoutes);
-app.use("api/species", speciesRoutes);
+app.use("api", animalsRoutes);
+app.use("api", speciesRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const PORT = process.env.PORT || 3000;
