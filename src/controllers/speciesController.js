@@ -25,8 +25,7 @@ const getSpeciesById = async (req, res) => {
 const createSpecies = async (req, res) => {
     try {
         const { name, animal_id } = req.body;
-        const photo = req.file ? req.file.filename : null;
-        const newSpecies = await speciesModel.createSpecies(name, animal_id, photo);
+        const newSpecies = await speciesModel.createSpecies(name, animal_id);
         res.status(201).json(newSpecies);
     } catch (error) {
         res.status(500).json({ message: "Erro ao criar espécie" });

@@ -23,9 +23,9 @@ const getSpeciesById = async (id) => {
     return result.rows[0];
 };
 
-const createSpecies = async (name, animal_id, photo) => {
+const createSpecies = async (name, animal_id) => {
     const result = await pool.query("INSERT INTO species (name, animals_id) VALUES ($1, $2) RETURNING *", 
-        [name, animal_id, photo]);
+        [name, animal_id]);
     return result.rows[0];
 };
 

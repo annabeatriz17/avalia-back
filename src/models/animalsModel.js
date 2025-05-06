@@ -10,8 +10,8 @@ const getAnimalById = async (id) => {
     return result.rows[0];
 };
 
-const createAnimal = async (name, pesoReal) => {
-    const result = await pool.query("INSERT INTO animals (name, peso_real) VALUES ($1, $2) RETURNING *", [name, pesoReal]);
+const createAnimal = async (name, pesoReal, photo) => {
+    const result = await pool.query("INSERT INTO animals (name, peso_real, photo) VALUES ($1, $2, $3) RETURNING *", [name, pesoReal, photo]);
     return result.rows[0];
 };
 

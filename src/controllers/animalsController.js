@@ -24,7 +24,8 @@ const getAnimalById = async (req, res) => {
 const createAnimal = async (req, res) => {
     try {
         const { name, peso_real } = req.body;
-        const newAnimal = await animalsModel.createAnimal(name, peso_real);
+        const photo = req.file ? req.file.filename : null;
+        const newAnimal = await animalsModel.createAnimal(name, peso_real, photo);
         res.status(201).json(newAnimal);
     } catch (error) {
         res.status(500).json({ message: "Erro ao criar animal" });
