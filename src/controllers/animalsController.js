@@ -2,10 +2,12 @@ const animalsModel = require("../models/animalsModel");
 
 const getAllAnimals = async (req, res) => {
     try {
-        const animals = await animalsModel.getAllAnimals();
+        const { peso_real } = req.query;
+        const animals = await animalsModel.getAllAnimals(peso_real);
         res.json(animals);
     } catch (error) {
         res.status(500).json({ error: "Erro ao buscar animais" });
+        console.log(error);
     }
 };
 
