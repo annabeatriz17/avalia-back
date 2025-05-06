@@ -3,9 +3,9 @@ const pool = require("../config/database");
 const getAllAnimals = async (peso_real) => {
     if (!peso_real) {
         const result = await pool.query(
-            `SELECT animals.*, species.race AS species_race
+            `SELECT animals.*, species.name AS species_name
             FROM animals
-            LEFT JOIN species ON animals.species_id = species.id`
+            LEFT JOIN species ON animals.species_id = species.id`,
         );
     return result.rows;
     }else{
