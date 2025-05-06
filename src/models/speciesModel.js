@@ -23,7 +23,26 @@ const getSpeciesById = async (id) => {
     return result.rows[0];
 };
 
-const createSpecies = async (name, animal_id) => {
-    const result = await pool.query("INSERT INTO species (name, animals_id) VALUES ($1, $2) RETURNING *", [name, animal_id]);
+const createSpecies = async (name, animal_id, photo) => {
+    const result = await pool.query("INSERT INTO species (name, animals_id) VALUES ($1, $2) RETURNING *", 
+        [name, animal_id, photo]);
     return result.rows[0];
 };
+
+const updateSpecies = async (id, name, animal_id ) => {
+    const result = await pool.query("UPDATE species SET name = $1, animals_id = $2 WHERE id = $3 RETURNING *", [name, animal_id, id]);
+    if (result.rowCount === 0) {
+        return { error: "Espécie não encontrada" };
+    }
+    return result.rows[0];
+};
+
+const deleteSpecies = async (id) => {
+    const result = await pool.query("DELETE FROM species WHERE id = $1 RETURNING *", [id]);
+    if (result.rowCount === 0) {
+        return { error: "Não foi possível deletar a espécie" };
+    }
+    return { message: "Espécie deletada com sucesso" };
+};
+
+module.exports = { getAllSpecies, getSpeciesById, createSpecies, updateSpecies, deleteSpecies };
