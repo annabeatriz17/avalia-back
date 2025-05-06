@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const speciesController = require("../controllers/speciesController");
+const apiKeyMiddleware = require("../config/apiKey"); // 🔐
+
+router.use(apiKeyMiddleware); // 🔒 Aplica para todas as rotas abaixo
 
 
 router.get("/species", speciesController.getAllSpecies);

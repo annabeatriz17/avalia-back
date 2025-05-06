@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const animalsController = require("../controllers/animalsController");
 const upload = require("../config/upload");
+const apiKeyMiddleware = require("../config/apiKey"); // 🔐
+
+router.use(apiKeyMiddleware); // 🔒 Aplica para todas as rotas abaixo
 
 
 router.get("/animals", animalsController.getAllAnimals);
