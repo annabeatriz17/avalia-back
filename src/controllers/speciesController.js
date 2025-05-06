@@ -2,8 +2,7 @@ const speciesModel = require("../models/speciesModel");
 
 const getAllSpecies = async (req, res) => {
     try {
-        const { peso_real } = req.query;
-        const species = await speciesModel.getAllSpecies(peso_real);
+        const species = await speciesModel.getAllSpecies();
         res.json(species);
     } catch (error) {
         res.status(500).json({ message: "Erro ao buscar espécies" });

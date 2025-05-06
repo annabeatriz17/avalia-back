@@ -3,7 +3,7 @@ const animalsModel = require("../models/animalsModel");
 const getAllAnimals = async (req, res) => {
     try {
         const animals = await animalsModel.getAllAnimals();
-        res.jsonnt(animals);
+        res.json(animals);
     } catch (error) {
         res.status(500).json({ error: "Erro ao buscar animais" });
     }
